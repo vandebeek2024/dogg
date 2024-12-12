@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - DogGuardians</title>
+  <meta name="description" content="The world's first cryptocurrency and game aimed at protecting stray dogs." />
+  <meta name="keywords" content="dog guardians, dogg, $dogg, dogguardians" />
+  <meta name="author" content="guardians.dog" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.guardians.dog/">
+  <meta property="og:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="og:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="og:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="@dogguardians_">
+  <meta property="twitter:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="twitter:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="twitter:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <meta name="google-site-verification" content="" />
+  <link rel="canonical" href="https://www.guardians.dog/">
+  
+  <!-- favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        h2 {
+            color: #004d9d;
+        }
+
+        form {
+            margin-top: 20px !important;
+        }
+
+        table.table-bordered th,
+        table.table-bordered td {
+            border: 1px solid rgb(129, 129, 129);
+        }
+
+        .logout-button-container {
+            margin-top: 40px;
+            text-align: center;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mt-5">User Details</h2>
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id">ID:</label>
+                        <input type="text" class="form-control" id="id" name="id" value="<%= user._id %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="surname">Surname:</label>
+                        <input type="text" class="form-control" id="surname" name="surname" value="<%= user.surname %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email" value="<%= user.email %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">Country:</label>
+                        <input type="text" class="form-control" id="country" name="country" value="<%= user.country %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="surname">Referrer ID:</label>
+                        <input type="text" class="form-control" id="referrerID" name="referrerID"
+                            value="<%= user.referrerID %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="id">Wallet Address:</label>
+                        <input type="text" class="form-control" id="walletaddress" name="walletaddress"
+                            value="<%= user.walletaddress %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">Token Balance:</label>
+                        <input type="text" class="form-control" id="tokenbalance" name="tokenbalance"
+                            value="<%= user.tokenbalance %>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="surname">Referral Earning:</label>
+                        <input type="text" class="form-control" id="referralearning" name="referralearning"
+                            value="<%= user.referralearning %>">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary mt-3">Update Details</button>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4" style="text-align: center;">Pending Purchases</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Purchase Amount</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Transaction Hash</th>
+                        <th scope="col">Confirm Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (pendingPurchases.length===0) { %>
+                        <tr>
+                            <td colspan="7" style="text-align:center; font-style: italic;">No pending purchase</td>
+                        </tr>
+                        <% } else { %>
+                            <% pendingPurchases.forEach(purchase=> { %>
+                                <tr>
+                                    <td>
+                                        <%= purchase.orderId %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.orderAmount %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.paymentMethod %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.orderDate %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.transactionHash %>
+                                    </td>
+                                    <td><button class="btn btn-success btn-sm confirm-btn">Confirm</button></td>
+                                </tr>
+                                <% }); %>
+                                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4" style="text-align: center;">Confirmed Purchases</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Purchase Amount</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Transaction Hash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (confirmedPurchases.length===0) { %>
+                        <tr>
+                            <td colspan="5" style="text-align:center; font-style: italic;">No confirmed purchase</td>
+                        </tr>
+                        <% } else { %>
+                            <% confirmedPurchases.forEach(purchase=> { %>
+                                <tr>
+                                    <td>
+                                        <%= purchase.orderId %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.orderAmount %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.paymentMethod %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.orderDate %>
+                                    </td>
+                                    <td>
+                                        <%= purchase.transactionHash %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="logout-button-container">
+        <button type="button" class="btn btn-warning font-weight-bold"
+            onclick="window.location.href='/adminlogout'">Logout</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmButtons = document.querySelectorAll('.confirm-btn');
+            const userId = document.getElementById('id').value;
+            const userEmail = document.getElementById('email').value;
+            const userName = document.getElementById('name').value;
+            const userSurname = document.getElementById('surname').value;
+
+            confirmButtons.forEach(button => {
+                button.addEventListener('click', async function () {
+                    const row = this.closest('tr');
+                    const orderId = row.children[0].innerText;
+                    const orderAmount = row.children[1].innerText;
+                    const paymentMethod = row.children[2].innerText;
+                    const orderDate = row.children[3].innerText;
+                    const transactionHash = row.children[4].innerText;
+
+                    const data = {
+                        orderId: orderId,
+                        orderAmount: orderAmount,
+                        paymentMethod: paymentMethod,
+                        orderDate: orderDate,
+                        transactionHash: transactionHash,
+                        userId: userId,
+                        userEmail: userEmail,
+                        userName: userName,
+                        userSurname: userSurname
+                    };
+
+                    try {
+                        const response = await fetch('/admin/purchaseconfirmation', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Order confirmed successfully!',
+                            }).then(() => {
+                                window.location.reload();  // This will refresh the page
+                            });
+                        } else {
+                            throw new Error('Backend response was not ok');
+                        }
+                    } catch (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: `Failed to confirm order: ${error.message}`,
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(event.target); // Get form data
+            const formObject = Object.fromEntries(formData); // Convert FormData to JSON object
+            console.log(formObject);
+
+            try {
+                // Send POST request to update user details
+                const response = await fetch('/admin/updateuserdetails', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formObject)
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'User details updated successfully',
+                    }).then(() => {
+                        window.location.reload();  // This will refresh the page
+                    });
+                } else {
+                    const errorData = await response.json();
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: errorData.error
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred, please try again'
+                });
+            }
+        });
+    </script>
+    <!-- Include Bootstrap JS and jQuery (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICO Dashboard - DogGuardians</title>
+  <meta name="description" content="The world's first cryptocurrency and game aimed at protecting stray dogs." />
+  <meta name="keywords" content="dog guardians, dogg, $dogg, dogguardians" />
+  <meta name="author" content="guardians.dog" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.guardians.dog/">
+  <meta property="og:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="og:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="og:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="@dogguardians_">
+  <meta property="twitter:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="twitter:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="twitter:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <meta name="google-site-verification" content="" />
+  <link rel="canonical" href="https://www.guardians.dog/">
+  
+  <!-- favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+  
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    body {
+      font-family: Noto Sans, sans-serif;
+      background-color: #f5f5f5;
+      color: #001429;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      margin-left: 0px;
+    }
+
+    @media (min-width: 1200px) {
+    .container {
+        max-width: 100%;
+        grid-template-columns: 75% 20%;
+    }
+
+}
+
+    .content {
+      padding: 5px;
+
+    }
+
+    .sidebar {
+      padding: 20px;
+      text-align: center;
+      color: #cd5c00;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #001429;
+      border-radius: 0 0 45px 0;
+      color: white;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    main {
+      padding: 15px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #bebebe;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e7e7e7;
+    }
+
+    footer {
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      border-radius: 45px 0 0 0;
+      width: 100%;
+      background-color: #001429;
+    }
+
+    @media only screen and (max-width: 767px) {
+      #orderamount {
+        width: 45%;
+      }
+
+      .dashboard-text {
+        font-size: 20px;
+      }
+
+      main {
+        margin-top: 20px;
+      }
+      .sidebar{
+        padding: 20px 0px 20px 20px;
+      }
+    }
+
+    .quote_btn-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .quote_btn-container a {
+      color: #000000;
+      /* text-transform: uppercase; */
+    }
+
+    .quote_btn-container a span {
+      margin-left: 5px;
+    }
+
+    .quote_btn-container a:hover {
+      color: #f8842b;
+    }
+
+    .quote_btn-container .quote_btn {
+      display: inline-block;
+      padding: 5px 25px;
+      background-color: #ffffff;
+      color: #000a14;
+      border-radius: 5px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      /* border: 1px solid #f8842b; */
+    }
+
+    .quote_btn-container .quote_btn:hover {
+      color: #f8842b;
+      -webkit-transform: translateY(-3px);
+      transform: translateY(-3px);
+    }
+
+    .submit_btn {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #001429;
+      color: #fff;
+      border-radius: 5px;
+      transition: all 0.3s;
+      border: 1px solid #001429;
+      /* Assuming you want this style applied by default */
+    }
+
+    .submit_btn:hover {
+      color: #f8842b;
+    }
+
+    th.transaction-hash,
+    td.transaction-hash {
+      max-width: 200px;
+      /* Adjust the maximum width as needed */
+      overflow-x: auto;
+      /* Enable horizontal scroll if content overflows */
+      word-wrap: break-word;
+      /* Wrap long words to prevent overflow */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="/" style="display: block; text-align: center; margin-top: 7px;">
+      <img src="/images/site-logo.png" alt="Logo" style="max-height: 60px; max-width: 196px;">
+    </a>
+    <div class="quote_btn-container" style="margin-right: 15px;">
+      <a href="/userlogout" class="quote_btn">
+        <b>Log out</b>
+      </a>
+    </div>
+  </header>
+
+
+  <h2 style="text-align: center; font-weight: bold; margin-top: 10px;text-shadow: 3px 3px 0 #eee, 4px 4px 0 #2F4F4F;"
+    class="dashboard-text">ICO Dashboard</h2>
+
+  <div class="container">
+
+    <div class="content">
+      <h3 style="margin-left: 5%;font-weight: bold;">Token Purchase :</h3>
+      <small style="font-weight: bold; color: #cd5c00;">Token Price: 1 USDT = 10000 $DOGG</small>
+
+      <form action="/users/purchase" id="purchaseForm" method="post" style="margin-top: 10px;">
+        <label for="orderamount" style="font-weight: bold;">Enter the amount you want to purchase:</label><br>
+        <input type="number" id="orderamount" name="orderamount" min="0" placeholder="0 USDT" required>
+        <span id="total-price">= 0 $DOGG</span>
+        <br><br>
+
+        <label for="payment-method" style="font-weight: bold;">Select crypto deposit address to pay and complete the
+          transfer:</label><br>
+        <select id="payment-method" name="payment-method" required onchange="updateAddress()">
+          <option value="" disabled selected>List of cryptocurrencies</option>
+          <option value="UQBvm40j0g489MeK-qFnhtYrKnctE84J0l0o56H5HzzpW9xv">USDT (TON)</option>
+          <option value="TTcFtnU6B2b5e11iZCAQeR7C5joAKG69yp">USDT (TRON)</option>
+		  <option value="0xD2cB7D60D45B6B0C9Ec6ad269ED9dcf34be0a52c">USDT (ETH)</option>
+		  <option value="B75Zg5nhmeDzGBgvYxmZi4KA7oqFCk3bVqNX5B5iXNpC">USDT (Solana)</option>
+		  <option value="0xD2cB7D60D45B6B0C9Ec6ad269ED9dcf34be0a52c">USDT (AVAXC)</option>
+		  <option value="0xD2cB7D60D45B6B0C9Ec6ad269ED9dcf34be0a52c">USDT (BSC)</option>
+		  <option value="0xD2cB7D60D45B6B0C9Ec6ad269ED9dcf34be0a52c">USDT (Polygon)</option>
+		  <option value="0xD2cB7D60D45B6B0C9Ec6ad269ED9dcf34be0a52c">DAI (ETH)</option>
+        </select><br><br>
+        <div id="address-container"></div>
+
+        <label for="transaction-hash" style="font-weight: bold;">Enter transaction hash (TxID):</label><br>
+        <input type="text" id="transaction-hash" name="transaction-hash" required>
+        <br>
+        <div style="display: flex; align-items: center; gap: 5px; margin-top: 10px;">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms" style="margin-top: 8px;">I agree the token <a target="_blank" href="/whitepaper#page=6"
+              style="text-decoration: underline;">purchase terms</a>.</label>
+        </div>
+
+        <button type="submit" style="margin-top: 5px;" class="submit_btn">Buy Tokens →</button>
+      </form>
+
+    </div>
+
+    <div class="sidebar" style="margin-right: 0;">
+      <div style=" border: 2px solid #001429;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <label for="balance"><b>Token Balance:</b></label>
+        <p id="token-balance">
+          <%= tokenbalance %> $DOGG
+          <i class="fas fa-info-circle" style="color: #01aab4;" data-toggle="tooltip" data-placement="top" title="First token unlock will be held on initial DEX or CEX listing"></i>
+        </p>
+      </div>
+      <br>
+      <div style="border: 2px solid #001429;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <label for="referral"><b>Referral earning:</b></label>
+        <p id="referral-earning">
+          <%= referralearning %> $DOGG
+          <i class="fas fa-info-circle" style="color: #01aab4;" data-toggle="tooltip" data-placement="top" title="It will be added to your Token Balance end of the ICO"></i>
+        </p>
+      </div>
+      <br>
+    </div>
+
+  </div>
+
+
+
+
+  <main>
+    <section>
+      <h3 style="text-align: center; font-weight: bolder;">Your pending purchases</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Purchase amount</th>
+            <th>Order date</th>
+            <th class="transaction-hash">Transaction Hash</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (pendingPurchases.length === 0) { %>
+          <tr>
+            <td colspan="4" style="text-align:center; font-style: italic;">No pending purchase</td>
+          </tr>
+          <% } else { %>
+          <% pendingPurchases.forEach(purchase => { %>
+          <tr>
+            <td><%= purchase.orderId %></td>
+            <td><%= purchase.orderAmount %> <%= purchase.paymentMethod %></td>
+            <td id="orderdateplace"><%= purchase.orderDate %></td>
+            <td class="transaction-hash"><%= purchase.transactionHash %></td>
+          </tr>
+          <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+    
+
+    <section>
+      <h3 style="text-align: center; font-weight: bolder; max-width: 100%;">Your confirmed purchases</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Purchase amount</th>
+            <th>Order date</th>
+            <th class="transaction-hash">Transaction Hash</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (confirmedPurchases.length === 0) { %>
+          <tr>
+            <td colspan="4" style="text-align:center; font-style: italic;">No confirmed purchase</td>
+          </tr>
+          <% } else { %>
+          <% confirmedPurchases.forEach(purchase => { %>
+          <tr>
+            <td><%= purchase.orderId %></td>
+            <td><%= purchase.orderAmount %> <%= purchase.paymentMethod %></td>
+            <td id="orderdateplace"><%= purchase.orderDate %></td>
+            <td class="transaction-hash"><%= purchase.transactionHash %></td>
+          </tr>
+          <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+
+    <section style="margin-top: 30px;">
+      <p style="font-weight: bold; color: #cd5c00;">Invite friend and earn 100000 $DOGG:
+        <i class="fas fa-info-circle" style="color: #01aab4; margin-left: 4px;" data-toggle="tooltip" data-placement="top" title="To receive the reward, the person you refer must purchase a minimum of 100 USDT worth of tokens."></i>
+      </p>
+      <a style="text-decoration: underline; color: #002258;"
+        href='https://www.guardians.dog/join?refcode=<%= userIDlast6digit %>'>
+        https://www.guardians.dog/join?refcode=<%= userIDlast6digit %></a>
+      <button style="margin-left: 5px;" onclick="copyToClipboard()">Copy</button>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p style="margin-bottom: 0.5rem;">© 2024 DogGuardians - All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.getElementById('orderamount').addEventListener('input', function () {
+      const tokenPrice = 10000; // Token price in USDT
+      const orderamount = parseFloat(this.value);
+      const totalPrice = orderamount * tokenPrice;
+      document.getElementById('total-price').textContent = `= ${totalPrice} $DOGG`;
+    });
+
+    function updateAddress() {
+      var paymentMethodSelect = document.getElementById('payment-method');
+      var selectedValue = paymentMethodSelect.options[paymentMethodSelect.selectedIndex].value;
+      var addressContainer = document.getElementById('address-container');
+      addressContainer.innerHTML = '<input type="text" value="' + selectedValue + '" id="crypto-address" readonly><button type="button" onclick="copyAddress()" style="margin-bottom: 7px">Copy</button>';
+    }
+
+    function copyAddress() {
+      var copyText = document.getElementById("crypto-address");
+      copyText.select();
+      document.execCommand("copy");
+    }
+
+  </script>
+
+<script>
+  // Function to handle form submission
+  document.getElementById('purchaseForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    var selectElement = document.getElementById("payment-method");
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
+    var paymentMethod = selectedOption.text;
+    
+    const formData = {
+      orderAmount: document.getElementById('orderamount').value,
+      paymentMethod,
+      transactionHash: document.getElementById('transaction-hash').value,
+      orderDate: new Date()
+    };
+    
+    await makePurchase(formData);
+  });
+
+  // Function to make a purchase request
+  async function makePurchase(orderData) {
+    try {
+      const response = await fetch('users/purchase', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to make purchase');
+      }
+
+      const responseData = await response.json();
+      // Display success message using SweetAlert
+      await Swal.fire({
+        icon: 'success',
+        title: responseData.message,
+        showConfirmButton: true,
+        confirmButtonText: 'Close', // Customizing the confirm button text
+      });
+      // Reload the page after success message is displayed and closed
+      location.reload();
+    } catch (error) {
+      console.error('Error making purchase:', error.message);
+      // Display error message using SweetAlert
+      await Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error.message,
+      });
+    }
+  }
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.querySelectorAll('#orderdateplace');
+    
+    elements.forEach(function(element) {
+      if (element.textContent) {
+        const originalTimeString = element.textContent;
+
+        // Convert string to Date object
+        const originalDate = new Date(originalTimeString);
+
+        // Function to add leading zeros
+        function addLeadingZeros(number) {
+          return number < 10 ? "0" + number : number;
+        }
+
+        // Get UTC time in HH:mm format
+        const utcTime = addLeadingZeros(originalDate.getUTCHours()) + ":" + addLeadingZeros(originalDate.getUTCMinutes());
+
+        // Get date in dd.mm.yy format
+        const formattedDate = addLeadingZeros(originalDate.getUTCDate()) + "." + addLeadingZeros(originalDate.getUTCMonth() + 1) + "." + originalDate.getUTCFullYear().toString().slice(-2);
+
+        // Combine time and date
+        const result = utcTime + " UTC / " + formattedDate;
+        
+        // Update content of the element with the formatted result
+        element.textContent = result;
+      }
+    });
+  });
+</script>
+<script>
+  function copyToClipboard() {
+  // Get the text element containing the referral link
+  const referralLinkElement = document.querySelector('a[href*="refcode=<%= userIDlast6digit %>"]');
+
+  // Check if the element exists
+  if (referralLinkElement) {
+    const referralLink = referralLinkElement.getAttribute('href');
+
+    // Create a new element (e.g., a text area) to hold the link temporarily
+    const textArea = document.createElement('textarea');
+    textArea.value = referralLink;
+    textArea.style.position = 'fixed';  // Hide it off-screen
+    document.body.appendChild(textArea);
+
+    // Select the text content
+    textArea.select();
+
+    try {
+      // Use the clipboard API to copy the text
+      navigator.clipboard.writeText(textArea.value).then(() => {
+        console.log('Referral link copied to clipboard!');  // Log success message
+      }, () => {
+        console.error('Failed to copy referral link. Please try again.');
+      });
+    } catch (err) {
+      console.error('Failed to copy referral link:', err);
+      // Fallback for browsers that don't support clipboard API
+      console.log('Failed to copy referral link using the clipboard API. Please try manually selecting and copying the link.');
+    }
+
+    // Remove the temporary element
+    document.body.removeChild(textArea);
+  } else {
+    console.error('Referral link element not found.');
+  }
+}
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in - DogGuardians</title>
+  <meta name="description" content="The world's first cryptocurrency and game aimed at protecting stray dogs." />
+  <meta name="keywords" content="dog guardians, dogg, $dogg, dogguardians" />
+  <meta name="author" content="guardians.dog" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.guardians.dog/">
+  <meta property="og:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="og:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="og:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="@dogguardians_">
+  <meta property="twitter:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="twitter:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="twitter:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <meta name="google-site-verification" content="" />
+  <link rel="canonical" href="https://www.guardians.dog/">
+  
+  <!-- favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    body {
+        font-family: Tahoma, sans-serif;
+        padding: 20px;
+        max-width: 400px;
+        margin: auto;
+        background-color: #000A14;
+    }
+    h2 {
+        color: #333;
+    }
+    form {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    input[type=text], input[type=email], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #FF5200;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        margin-top: 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type=submit]:hover {
+        background-color: #F8842B;
+    }
+    .forgotpassword {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .error-message {
+        color: red;
+        font-size: 14px;
+    }
+    .toptexts {
+        margin-bottom: 10px;
+    }
+    a{
+        color: #f1f1f1;
+    }
+   
+</style>
+</head>
+<body>
+
+    <a href="/" style="display: block; text-align: center; margin-top: 7px;">
+        <img src="/images/site-logo.png" alt="Logo" style="max-height: 60px; max-width: 196px;">
+    </a>
+
+<form action="/users/login" method="post" onsubmit="return validateForm()">
+<div class="toptexts">
+    <h2 style="margin-top: 0px; margin-bottom: 5px;">Sign in</h2>
+    <small class="smalltext">with your DogGuardians Account</small>
+</div>
+
+    
+
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <span id="email-error" class="error-message"></span>
+
+    <input type="password" id="password" name="password" placeholder="Password" required>
+
+    <input type="submit" value="Sign in" style="font-weight: bold; font-size: 15px;">
+</form>
+
+<p class="forgotpassword"><a href="/resetpassword">Forgot password ?</a></p>
+
+<!-- Footer -->
+<footer style="color: grey; text-align: center; padding: 20px;position: fixed; left: 0; bottom: 0; width: 100%;font-size: 0.8em;">
+    <div>
+      <a href="/privacy-policy" target="_blank" style="color: grey; margin-right: 10px;">Privacy Policy</a>
+      <a href="/terms-conditions" target="_blank" style="color: grey;">Terms & Conditions</a>
+    </div>
+    <p>©2024 DogGuardians. All Rights Reserved.</p>
+  </footer>
+  
+
+<script>
+function validateForm() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        alert("Please fill in all required fields.");
+        return false;
+    }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        document.getElementById("email-error").innerText = "Please enter a valid email address";
+        return false;
+    }
+
+    return true;
+}
+</script>
+<script>
+    const form = document.querySelector('form');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+  
+      const response = await fetch('/users/login', {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" }
+      });
+  
+      try {
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+  
+          // Check if login was successful
+          if (data.succeeded) {
+            // Redirect to the home page
+            window.location.href = '/ico-dashboard';
+          } else {
+            // Display error message
+            Swal.fire({
+              title: data.error,
+              icon: 'error'
+            });
+          }
+        } else if (response.status === 401) {
+          // Handle 401 Unauthorized error
+          const errorData = await response.json();
+          Swal.fire({
+            title: errorData.error,
+            icon: 'error'
+          });
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    });
+</script>
+
+  
+  
+
+</body>
+</html>

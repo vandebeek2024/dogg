@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitepaper - DogGuardians/title>
+  <meta name="description" content="Whitepaper of DogGuardians" />
+  <meta name="keywords" content="dog guardians, dogg, $dogg, dogguardians" />
+  <meta name="author" content="guardians.dog" />
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.guardians.dog/">
+  <meta property="og:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="og:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="og:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="@dogguardians_">
+  <meta property="twitter:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="twitter:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="twitter:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <meta name="google-site-verification" content="" />
+  <link rel="canonical" href="https://www.guardians.dog/">
+  
+  <!-- favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .whitepaper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .page {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .page img {
+            width: 100%;
+            max-width: 800px; /* Adjust as needed */
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .page-number {
+                bottom: 22px;
+                right: 15px;
+                padding: 4px 8px;
+                font-size: 11px;
+            }
+        }
+
+        /* Expandable Content Styles */
+        #hidden-content {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #show-more-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e95500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #show-more-btn:hover {
+            background-color: #e6a009;
+        }
+    </style>
+</head>
+<body>
+    <div class="whitepaper">
+        <% images.forEach((image, index) => { %>
+            <div class="page" id="page-<%= index + 1 %>">
+                <img src="<%= image %>" alt="Whitepaper Page <%= index + 1 %>">
+                <span class="page-number">Page <%= index + 1 %></span>
+            </div>
+        <% }); %>
+
+        <!-- Expandable Content -->
+        <button id="show-more-btn">Show the Whitepaper as a Text</button>
+        <div id="hidden-content">
+            <p style="margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<strong>DogGuardians - $DOGG </strong>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<strong>Whitepaper v1.0</strong>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>Table of Content</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				1. Overview
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				2. About the game
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				3. $DOGG and Tokenomics
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				4. ICO Phase
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				5. Roadmap
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				6. Stray dogs problems and our solutions
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				7. Legal Consideration
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>Overview</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				DogGuardians is a crypto-based cross-platform play-to-earn game, and the $DOGG token is the game's reward token. The main goal of the project is to use the developing cryptocurrency ecosystem for the benefit of stray dogs. Unlike other memecoins, DogGuardians is not just for entertainment purposes; the largest share of the project's revenue is allocated to charity works on stray dogs.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>About the game</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				In the game, players take control of the main hero dog and complete missions to save the puppies from the hands of the main villain. As a platformer, players jump between levels, overcome obstacles and solve puzzles, and earn $DOGG tokens as a reward. Players can easily transfer the $DOGG token, they collected in the game, to external wallets (to crypto or exchange wallets). Unlike other play-to-earn games, DogGuardians does not force players to purchase any NFT or tool initially, because the project's main revenue comes from in-game advertising.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				The game will be offered on mobile platforms (Android and IOS) as the first stage, and later the web and desktop version will be available to users.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>$DOGG token and Tokenomics</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				$DOGG is the reward token of the game and is one of the important parts of the ecosystem. The token was issued on the Solana blockchain, which has the fastest and most affordable transaction costs. Its maximum supply is 800 billion. There has not been a Seed Sale of the token before, the token will be offered for sale to investors through the ICO for the first time in order to provide fair conditions. The following privileges are offered to token holders to protect the token price:
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span>12% APY reward on Staking
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span>0.3% tax distribution from every transaction
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Token Contract Address on Solana :
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				ASniBZAKtrepawfHU9McMfxbbYjayScD67oq451HaHCy
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Here is also <em>Tokenomics </em>:
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				ICO Sales: 25.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Charity: 25.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Marketing: 15.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				User Rewards: 10.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				DEX &amp; CEX Liquidity: 10.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Development: 8.0 %
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Team: 7.0%
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>ICO Phase</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				The ICO phase will take place on our website and will continue until 28.02.2025. In order to purchase $DOGG tokens, investors must create an account by filling in certain information in the registration section of the website. After account registration, the investor must transfer $USDT (or $DAI) to the crypto address specified on the ICO Dashboard page in exchange for the $DOGG amount they want to purchase.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Locked tokens sold through ICO will be unlocked in 3 stages. The first token unlock will take place during the first DEX or CEX listing after the ICO and will be distributed to the Solana wallets that investors specified during the registration phase. After that, the 2nd and 3rd stage token unlock will take place in the following months. 
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Additionally, users have the opportunity to earn 100,000 $DOGG (<span style="font-family:'Cambria Math'">≈</span>10 USDT) per user they invite to the ICO with their referral link (or code), for this, the user who registers with the referrak link (or code) must purchase a minimum of 1,000,000 $DOGG (<span style="font-family:'Cambria Math'">≈</span>100 USDT).
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>Roadmap</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Q4</em><em><span style="font-family:'Cambria Math'; "> </span></em><em>2024:</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Website<span style="font-family:'Cambria Math'"> </span>Launch
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Token<span style="font-family:'Cambria Math'"> </span>development
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Social<span style="font-family:'Cambria Math'"> </span>Media<span style="font-family:'Cambria Math'"> </span>accounts
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Q1</em><em><span style="font-family:'Cambria Math'; "> </span></em><em>2025:</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>ICO<span style="font-family:'Cambria Math'"> </span>Sales
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Worldwide<span style="font-family:'Cambria Math'"> </span>project<span style="font-family:'Cambria Math'"> </span>announcement
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Cross<span style="font-family:'Cambria Math'">-</span>platform<span style="font-family:'Cambria Math'"> </span>Game<span style="font-family:'Cambria Math'"> </span>Development
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Q2</em><em><span style="font-family:'Cambria Math'; "> </span></em><em>2025:</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>First<span style="font-family:'Cambria Math'"> </span>token<span style="font-family:'Cambria Math'"> </span>unlock
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>DEX<span style="font-family:'Cambria Math'"> &amp; </span>CEX<span style="font-family:'Cambria Math'"> </span>listings<span style="font-family:'Cambria Math'"> (</span>early<span style="font-family:'Cambria Math'"> </span>February<span style="font-family:'Cambria Math'"> </span>est<span style="font-family:'Cambria Math'">.)</span>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Mobile<span style="font-family:'Cambria Math'"> </span>Game<span style="font-family:'Cambria Math'"> </span>launch
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Q3</em><em><span style="font-family:'Cambria Math'; "> </span></em><em>2025:</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Creating<span style="font-family:'Cambria Math'"> </span>our<span style="font-family:'Cambria Math'"> </span>own<span style="font-family:'Cambria Math'"> </span>Dog<span style="font-family:'Cambria Math'"> </span>Shelters
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Web<span style="font-family:'Cambria Math'"> &amp; </span>PC<span style="font-family:'Cambria Math'"> </span>game<span style="font-family:'Cambria Math'"> </span>launch
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Bug<span style="font-family:'Cambria Math'"> </span>Bounty<span style="font-family:'Cambria Math'"> </span>program
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Q4</em><em><span style="font-family:'Cambria Math'; "> </span></em><em>2025:</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Partnership<span style="font-family:'Cambria Math'"> </span>with<span style="font-family:'Cambria Math'"> </span>Global<span style="font-family:'Cambria Math'"> </span>Animal<span style="font-family:'Cambria Math'"> </span>Welfare<span style="font-family:'Cambria Math'"> </span>Organizations
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Partnership<span style="font-family:'Cambria Math'"> </span>with<span style="font-family:'Cambria Math'"> </span>other<span style="font-family:'Cambria Math'"> </span>memecoin<span style="font-family:'Cambria Math'"> </span>projects
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<span style="font-family:'Segoe UI Symbol'">🔸</span><span style="font-family:'Cambria Math'"> </span>Upgrade<span style="font-family:'Cambria Math'"> </span>to<span style="font-family:'Cambria Math'"> </span>SPL<span style="font-family:'Cambria Math'"> </span>Token<span style="font-family:'Cambria Math'">-</span>2022
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>Global stray dog problems and our solutions</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Stray dogs face a multitude of challenges worldwide, often stemming from human actions and environmental factors. Here are some common problems faced by stray dogs globally:
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Rabies is a significant concern. The World Health Organization (WHO) estimates that there are more than 200 million stray dogs worldwide, and every year, 55,000 people die from rabies. Another 15 million receive post-exposure treatment to avert the deadly disease. Most of these cases occur in Asia and Africa, with 99% of the fatalities caused by dogs.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Excessive population triggers resource competition and disease spread.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Lack of veterinary care leads to parasites, injuries, and diseases.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- They can be subjected to physical violence and cruelty from humans.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Struggle to find adequate shelter and food.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Traffic accidents threaten the safety of stray dogs.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- In some areas, inhumane measures are taken for population control.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Stray dogs may conflict with humans and threaten public safety.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- They can affect wildlife and harm ecosystems.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				- Stray dogs lack legal protection in many countries.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<em>Our solutions :</em>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				Our priority is to establish our own shelters in areas where there are no animal charities, in cooperation with local authorities. These shelters will provide treatment to injured and sick dogs, and will keep stray dogs here for care and adoption purposes. In addition, we plan to provide free rabies vaccination and neutering procedures here. Moreover, we will also cooperate with local and international animal protection organizations to carry out wide-ranging projects. In the coming periods, we will also announce our incentive program for animal-loving individuals and volunteer organizations.
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				&#xa0;
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; text-align:center; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				<u>Legal Consideration</u>
+			</p>
+			<p style="margin-top:10pt; margin-bottom:10pt; line-height:115%; widows:0; orphans:0; font-size:11pt">
+				The content of this whitepaper does not constitute an offer to purchase or solicitation to sell, nor is it a recommendation to buy or sell, any token or other product. Purchasing and selling tokens is inherently risky and holders must bear their risk of loss. Neither the authors of this project website nor any participants in the DogGuardians project accept any liability for losses or taxes that holders, purchasers or sellers may incur. The value of DOGG may decrease and may be highly volatile. This whitepaper is not directed towards any person located in a jurisdiction where purchasing, selling or holding DOGG is prohibited or regulated. Consult your local laws before transacting in any cryptocurrency.
+			</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Function to scroll to the page specified in the URL fragment
+            function scrollToPageFromHash() {
+                const hash = window.location.hash; // e.g., "#page=3"
+                if (hash.startsWith('#page=')) {
+                    const pageNumber = hash.split('=')[1];
+                    const target = document.getElementById(`page-${pageNumber}`);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+
+            // Wait for all images to load before attempting to scroll
+            function waitForImagesToLoad() {
+                const images = document.querySelectorAll('.page img');
+                let loadedImages = 0;
+                const totalImages = images.length;
+
+                // Function to check if all images are loaded
+                function checkImagesLoaded() {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        // Once all images are loaded, scroll to the page
+                        scrollToPageFromHash();
+                    }
+                }
+
+                // Attach load event to each image
+                images.forEach(img => {
+                    if (img.complete) {
+                        checkImagesLoaded(); // If already loaded, trigger immediately
+                    } else {
+                        img.addEventListener('load', checkImagesLoaded);
+                    }
+                });
+            }
+
+            // Scroll on page load if a fragment exists
+            waitForImagesToLoad();
+
+            // Listen for hash changes (e.g., navigating back/forward in browser)
+            window.addEventListener('hashchange', () => {
+                waitForImagesToLoad(); // Recheck and scroll on hash change
+            });
+
+            // Expandable content toggle
+            const showMoreBtn = document.getElementById("show-more-btn");
+            const hiddenContent = document.getElementById("hidden-content");
+
+            showMoreBtn.addEventListener("click", () => {
+                if (hiddenContent.style.display === "none" || hiddenContent.style.display === "") {
+                    hiddenContent.style.display = "block";
+                    showMoreBtn.textContent = "Show Less";
+                } else {
+                    hiddenContent.style.display = "none";
+                    showMoreBtn.textContent = "Show the Whitepaper as a Text";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

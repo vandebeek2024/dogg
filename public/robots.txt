@@ -1,0 +1,26 @@
+User-agent: *
+
+Disallow: /admindashboard/
+Disallow: /adminlogin/
+Disallow: /ico-dashboard/
+Disallow: /join/
+Disallow: /login/
+Disallow: /reset-password/
+Disallow: /searchpanel/
+
+Sitemap: https://www.guardians.dog/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: SEMrushBot
+Disallow: /
+
+Crawl-delay: 10

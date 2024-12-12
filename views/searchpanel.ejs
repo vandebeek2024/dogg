@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Panel - DogGuardians</title>
+  <meta name="description" content="The world's first cryptocurrency and game aimed at protecting stray dogs." />
+  <meta name="keywords" content="dog guardians, dogg, $dogg, dogguardians" />
+  <meta name="author" content="guardians.dog" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.guardians.dog/">
+  <meta property="og:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="og:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="og:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="@dogguardians_">
+  <meta property="twitter:title" content="DogGuardians - Play & Protect & Earn">
+  <meta property="twitter:description" content="The world's first cryptocurrency and game aimed at protecting stray dogs.">
+  <meta property="twitter:image" content="https://www.guardians.dog/images/og-image.jpg">
+
+  <meta name="google-site-verification" content="" />
+  <link rel="canonical" href="https://www.guardians.dog/">
+  
+  <!-- favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    table {
+      width: 50%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row mb-3">
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group">
+          <input type="text" class="form-control" id="search1" placeholder="Full ID input">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="search1()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6 offset-md-3">
+        <div class="input-group">
+          <input type="text" class="form-control" id="search2" placeholder="Last 6 digit of ID">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="search2()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="listofusers" style="font-weight: bold; text-align: center;"></div>
+
+  <div class="purchase-results" style="text-align: center; margin-top: 100px;">
+  <h3><u>Purchase Results</u></h3>
+<p>Total Pending Purchases: <b><%= totalPending %> USDT</b></p>
+<p>Total Confirmed Purchases: <b><%= totalConfirmed %> USDT</b></p>
+</div>
+
+
+  <script>
+    function search1() {
+      let id = document.getElementById('search1').value;
+      window.open("/admin/admindashboard?id=" + id, "_blank");
+    }
+  </script>
+  <script>
+    async function search2() {
+      const last6Digits = document.getElementById('search2').value;
+
+      try {
+        const response = await fetch(`/admin/finduserwithlast6digit?last6=${last6Digits}`);
+        const data = await response.json();
+
+        let lazim = JSON.parse(data);
+        let htmlContent = '';
+
+        // Loop through each item in the array
+        lazim.forEach(item => {
+          htmlContent += `ID: ${item._id}, Email: ${item.email}<br>`;
+        });
+
+        // Set the innerHTML of the target element
+        document.getElementById("listofusers").innerHTML = htmlContent;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        // Handle error (e.g., display an error message to the user)
+      }
+    }
+  </script>
+
+</body>
+
+</html>
