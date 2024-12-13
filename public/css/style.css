@@ -1108,3 +1108,13 @@ tr:last-child td:last-child {
   display: none;
  }
 }
+
+.fa-icons {
+  width: 25px;
+  height: 25px;
+  filter: grayscale(100%); /* Initial grayscale */
+  transition: filter 0.05s ease;
+}
+.fa-icons:hover {
+  filter: grayscale(0%) sepia(100%) saturate(500%) hue-rotate(330deg); /* Orange color */
+}
